@@ -1,0 +1,2 @@
+The code for this app - aushadha_demographics-us is distributed under GNU GPL Version 3 
+Please see the AuShadha Project license of License Details
