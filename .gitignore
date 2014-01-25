@@ -1,6 +1,8 @@
 *.py[co]
 *.db
 
+*.kdev4
+
 .Python
 .DS_Store
 
