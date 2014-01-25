@@ -1,0 +1,73 @@
+{% if perms.phone.add_phone %}
+  <div data-dojo-type = "dijit/form/Form" 
+       id             = "newPhoneAddForm" 
+       data-dojo-id   = "newPhoneAddForm"
+       encType        = "multipart/form-data" 
+       action         = "" 
+       method         = "">
+
+
+        <script type="dojo/on" data-dojo-event="submit">
+
+        if( this.validate() ){
+            require([
+            "dijit/registry", 
+            ],
+            
+            function(registry){
+            //    {% if perms.phone.add_phone %}
+            addItem("{{patient_detail_obj.urls.add.phone}}", "newPhoneAddForm", "PHONE_GRID" );
+            //    {% else %}
+            registry.byId("permissionDeniedErrorDialog").show();
+            //   {% endif %}
+            return false;
+          });
+
+          return false;
+
+          }
+
+          else{
+            raiseInvalidFormSubmission();
+            return false;
+          }
+
+        </script>
+
+        <table>
+          {{phone_form}}
+        </table>
+
+        <button   type 	          = "submit" 
+                  data-dojo-type  = "dijit/form/Button"
+                  data-dojo-props = "iconClass:'dijitIconSave'"
+                  name 	          = "submitbutton" 
+                  id 		      = "phone_form_submit"
+                  value           = "Add"
+        >
+          Add
+        </button>
+
+        <button   type 	          = "reset" 
+                  data-dojo-type  = "dijit/form/Button"
+                  data-dojo-props = "iconClass:'dijitIconClear'"
+                  id 		      = "phone_form_reset"
+                  value           = "Reset">
+
+          Reset
+
+          <script type="dojo/on" data-dojo-event="click">
+
+              return confirm("This will reset the form . Proceed ? " );
+
+          </script>
+
+        </button>
+
+</div>
+
+{% else %}
+
+  <p class="suggestion_text"> No Permission to add Phones </p>
+
+{% endif %}
