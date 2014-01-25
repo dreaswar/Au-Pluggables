@@ -1,11 +1,10 @@
 from django.contrib import admin
-from .models import Contact
+from .models import Demographics
 
 
 
-class ContactAdmin(admin.ModelAdmin):
-    list_display = ['patient_detail', 'address',
-                    'city', 'state', 'country', 'pincode']
+class DemographicsAdmin(admin.ModelAdmin):
+    pass
 
 
-admin.site.register(Contact, ContactAdmin)
+admin.site.register(Demographics, DemographicsAdmin)

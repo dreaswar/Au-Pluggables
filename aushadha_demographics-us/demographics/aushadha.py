@@ -9,7 +9,7 @@
 # This can be later extended to class based role
 ################################################################################
 
-from .models import Contact
+from .models import Demographics
 from AuShadha.apps.ui.ui import ui as UI
 
-UI.register('Contact', Contact )
+UI.register('Demographics', Demographics )

@@ -1,6 +1,6 @@
 include LICENSE.txt
 include README.md
-recursive-include media *
-recursive-include templates *
-recursive-include docs *
-recursive-include dijit_widgets *
+recursive-include {{app_name}}/media *
+recursive-include {{app_name}}/templates *
+recursive-include {{app_name}}/docs *
+recursive-include {{app_name}}/dijit_widgets *
