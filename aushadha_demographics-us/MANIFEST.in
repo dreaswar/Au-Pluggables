@@ -1,6 +1,8 @@
 include LICENSE.txt
 include README.md
-recursive-include media *
-recursive-include templates *
-recursive-include docs *
-recursive-include dijit_widgets *
+recursive-include contact *
+recursive-include phone *
+recursive-include guardian *
+recursive-include demographics *
+recursive-include insurance *
+recursive-include email_and_fax *
