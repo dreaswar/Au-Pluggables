@@ -50,9 +50,9 @@ class Contact(AuShadhaBaseModel):
                              default="Tamil Nadu"
                              )
     country = models.CharField(max_length=20,
-                               default="India"
+                               default="USA"
                                )
-    pincode = models.PositiveIntegerField(max_length=8,
+    zip_code = models.PositiveIntegerField(max_length=8,
                                           null=True,
                                           blank=True
                                               )
@@ -72,7 +72,7 @@ class Contact(AuShadhaBaseModel):
                                             self.city,
                                             self.state,
                                             self.country,
-                                            self.pincode
+                                            self.zip_code
                                             )
         else:
             return "%s, %s, %s, %s" % (self.address,

@@ -1,9 +1,11 @@
 Introduction  
 ------------  
-
-This the US version of the stock demographics app in AuShadha project  
+This the US version of the stock demographics app in AuShadha project.  
 This Application is intended to replace the stock Demographics application in AuShadha and is intended to  
 provide an interface for collection and storage of Demographics Data of Patients as per the US data collection methods  
+
+This application is part of the Au-Pluggables project intended to develop pluggable, user / locale specific module 
+for AuShadha Open Source EMR  
 
 
 Installation  

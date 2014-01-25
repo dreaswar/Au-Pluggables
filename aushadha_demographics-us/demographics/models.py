@@ -19,6 +19,19 @@ PatientDetail = UI.get_module("PatientRegistration")
 from dijit_fields_constants import DEMOGRAPHICS_FORM_CONSTANTS
 DEFAULT_DEMOGRAPHICS_FORM_EXCLUDES = ('patient_detail',)
 
+MARITAL_STATUS = ( ('Married', 'married'), 
+                  ('Single', 'single')
+                  ('Divorced','divorced'), 
+                  ('Separated', 'separated'),
+                  ('Partner', 'partner') 
+                )
+
+BARRIERS_TO_COMMUNICATION = ( ('Language', 'language'), 
+                              ('Hearing', 'hearing'), 
+                              ('Seeing', 'seeing'), 
+                            )
+
+
 
 class Demographics(AuShadhaBaseModel):
 
@@ -34,33 +47,17 @@ class Demographics(AuShadhaBaseModel):
 
     date_of_birth = models.DateField(auto_now_add=False,
                                      null=True,
-                                     blank=True
-                                         )
-    socioeconomics = models.CharField(max_length=100, default="Middle",
-                                      choices=(("low", "Low"),
-                                               ("middle", "Middle"),
-                                               ("high", "High")
-                                                   )
-                                      )
-    education = models.CharField(max_length=100,
-                                 default="Graduate",
-                                         choices=(('pg', 'Post-Graduate'),
-                                                  ('g', 'Graduate'),
-                                                  ('hs', 'High School'),
-                                                  ('lg', "Lower Grade School"),
-                                                  ('i', "Iliterate")
-                                                  )
-                                 )
-    housing_conditions = models.TextField(max_length=250,
-                                          default="Comfortable, with good sanitary conditions"
-                                          )
-    religion = models.CharField(max_length=200)
-    religion_notes = models.CharField(max_length=100,
-                                      null=True,
-                                      blank=True
-                                      )
+                                     blank=True,
+                                     help_text = "MM/DD/YYYY"
+                                    )
+    medical_record_number = models.CharField(max_length = 100, unique = True) 
+    social_security_number = models.CharField(max_length = 100, unique = True, help_text  = "Format: xxx-xx-xxxx") 
+
+    marital status	 = models.CharField(max_length = 100, choices = MARITAL_STATUS)
     race = models.CharField(max_length=200)
     languages_known = models.TextField(max_length=300)
+    barriers to communication        = models.Charfield(max_length = 100, choices = BARRIERS_TO_COMMUNICATION)
+
     patient_detail = models.ForeignKey(PatientDetail,
                                        null=True,
                                        blank=True,
@@ -87,6 +84,103 @@ class Demographics(AuShadhaBaseModel):
         return str_obj
 
 
+
+
+
+class EmployerDetails(AuShadhaBaseModel):
+
+    """
+      employer	Text
+      employer address	xxx Street Name
+      employer city	Text
+      employer state	State Abbreviation
+      employer zip code	xxxxx
+      employer phone	(xxx) xxx - xxxx
+      occupation	Text
+    """
+
+    occupation = models.CharField(max_length = 100)
+    employer = models.CharField(max_length = 100)
+    address = models.TextField(max_length = 1000)
+    city   = models.CharField(max_length = 100)
+    state = models.CharField(max_length = 100, help_text = "Abbreviation")
+    zip_code = models.CharField(max_length = 100)
+    phone  = models.CharField(max_length = 100, help_text = "(xxx)-xxx-xxxx")
+    patient_detail = models.ForeignKey(PatientDetail,
+                                       null=True,
+                                       blank=True,
+                                       unique=True
+                                       )
+
+    def __unicode__(self):
+        return " Employer Details - %s" % (self.patient_detail)
+
+
+
+################################################################################
+
+
+class US_StateRegistry(AuShadhaBaseModel):
+
+  """
+   Registry for US States, Abbreviations and Zip-Codes
+  """
+  state_name = models.CharField(max_length = 100, unique = True)
+  abbreviation = models.CharField(max_length = 3, unique = True)
+
+  class Meta:
+    unique_together = ('state', 'abbreviation')
+    verbose_name = "US States"
+    verbose_name_plural = "US States"
+
+
+
+class US_CityRegistry(AuShadhaBaseModel):
+
+  """
+   Registry for US Cities
+  """
+  city_name = models.CharField(max_length = 100, unique = True)
+  state = models.ForeignKey('US_StateRegistry')
+
+  class Meta:
+    unique_together = ('state', 'city_name')
+    verbose_name = "US Cities"
+    verbose_name_plural = "US Cities"
+
+
+
+class US_ZipCodeRegistry(AuShadhaBaseModel):
+
+  """
+   US Zip Code Registry
+  """
+
+  zip_codes    = models.CharField(max_length = 100, unique  = True )
+  state = models.ForeignKey('US_StateRegistry')
+
+  class Meta:
+    unique_together = ('zip_codes', 'state')
+    verbose_name = "US Zip Code Registry"
+    verbose_name_plural = "US Zip Code Registry"
+
+
+################################################################################
+
+
+class LanguageRegistry(AuShadhaBaseModel):
+  """
+   Languages Registry
+  
+  """
+  language_name = models.CharField(max_length = 100, unique = True)
+
+
+class RaceRegistry(AuShadhaBaseModel):
+  """
+   Race Registry 
+  """
+  race_name = models.CharField(max_length = 100, unique = True)
 
 
 ############################# Model Forms ######################################

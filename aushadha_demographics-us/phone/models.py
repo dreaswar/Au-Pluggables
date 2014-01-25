@@ -36,28 +36,29 @@ class Phone(AuShadhaBaseModel):
     phone_type = models.CharField('Type',
                                   max_length=10,
                                   choices=(("Home", "Home"),
-                                           ("Office", "Office"),
-                                           ("Mobile", "Mobile"),
-                                           ("Fax", "Fax"),
+                                           ("Work", "Work"),
+                                           ("Cell", "Cell"),
                                            ("Others", "Others")
                                            ),
                                   default = "Home")
-    ISD_Code = models.PositiveIntegerField('ISD',
+    country_code = models.PositiveIntegerField('Country Code',
                                            max_length=4,
                                            null=True,
                                            blank=True,
-                                           default="0091"
+                                           default="001"
                                            )
-    STD_Code = models.PositiveIntegerField('STD',
+    area_code = models.PositiveIntegerField('Area Code',
                                            max_length=4,
                                            null=True,
-                                           blank=True,
-                                           default="0422"
+                                           blank=True
                                            )
     phone = models.PositiveIntegerField(max_length=10,
                                         null=True,
                                         blank=True
                                         )
+
+    preferred = models.BooleanField(default = False)
+
     patient_detail = models.ForeignKey(PatientDetail,
                                        null=True,
                                        blank=True
@@ -68,13 +69,13 @@ class Phone(AuShadhaBaseModel):
         verbose_name_plural = "Phone"
         ordering = ('patient_detail',
                     'phone_type',
-                    'ISD_Code',
-                    'STD_Code'
+                    'country_code',
+                    'area_code'
                     )
 
     def __unicode__(self):
         if self.phone:
-            return "%s- %s -%s" % (self.ISD_Code, self.STD_Code, self.phone)
+            return "%s- %s -%s" % (self.country_code, self.area_code, self.phone)
         else:
             return "No Phone Number Provided"
 
@@ -94,6 +95,9 @@ class Phone(AuShadhaBaseModel):
             str_obj += _str
         str_obj += "</ul>"
         return str_obj
+
+
+
 ############################# Model Forms ######################################
 
 
