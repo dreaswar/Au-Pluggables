@@ -97,8 +97,8 @@ def phone_add(request, patient_id = None):
                           "id": phone_object.id,
                           'pat_id': phone_object.patient_detail.id,
                           'phone_type': phone_object.phone_type,
-                          'STD_Code': phone_object.STD_Code,
-                          'ISD_Code': phone_object.ISD_Code,
+                          'country_code': phone_object.country_code,
+                          'area_code': phone_object.area_code,
                           'phone': phone_object.phone,
                           "edit": phone_object.urls['edit'],
                           "del": phone_object.urls['del'],
@@ -163,13 +163,13 @@ def phone_edit(request, phone_id):
                           "error_message": error_message,
                           "form_errors": form_errors,
                           "id": phone_object.id,
-                          'phone_type': phone_object.phone_type,
-                          'STD_Code': phone_object.STD_Code,
-                          'ISD_Code': phone_object.ISD_Code,
-                          'phone': phone_object.phone,
                           'pat_id': phone_object.patient_detail.id,
+                          'phone_type': phone_object.phone_type,
+                          'country_code': phone_object.country_code,
+                          'area_code': phone_object.area_code,
+                          'phone': phone_object.phone,
                           "edit": phone_object.urls['edit'],
-                          "del": phone_object.urls['del']
+                          "del": phone_object.urls['del'],
                           }
               else:
                   success = False

@@ -96,9 +96,16 @@ def guardian_add(request, patient_id = None):
                       'pat_id': guardian_object.patient_detail.id,
                       "guardian_name": guardian_object.guardian_name,
                       "relation_to_guardian": guardian_object.relation_to_guardian,
+                      "guardian_address": guardian_object.guardian_address,       
+                      "guardian_city": guardian_object.guardian_city,       
+                      "guardian_state": guardian_object.guardian_state,       
+                      "guardian_country": guardian_object.guardian_country,       
+                      "guardian_zip_code": guardian_object.guardian_zip_code,       
                       "guardian_phone": guardian_object.guardian_phone,       
+                      "next_of_kin": guardian_object.next_of_kin,       
+                      "emergency_contact": guardian_object.emergency_contact,       
                       "edit": guardian_object.urls['edit'],
-                      "del": guardian_object.urls['del'],
+                      "del": guardian_object.urls['del']
                   }
               else:
                   success = False
@@ -164,7 +171,14 @@ def guardian_edit(request, guardian_id):
                           'pat_id': guardian_object.patient_detail.id,
                           "guardian_name": guardian_object.guardian_name,
                           "relation_to_guardian": guardian_object.relation_to_guardian,
+                          "guardian_address": guardian_object.guardian_address,       
+                          "guardian_city": guardian_object.guardian_city,       
+                          "guardian_state": guardian_object.guardian_state,       
+                          "guardian_country": guardian_object.guardian_country,       
+                          "guardian_zip_code": guardian_object.guardian_zip_code,       
                           "guardian_phone": guardian_object.guardian_phone,       
+                          "next_of_kin": guardian_object.next_of_kin,       
+                          "emergency_contact": guardian_object.emergency_contact,       
                           "edit": guardian_object.urls['edit'],
                           "del": guardian_object.urls['del']
                   }

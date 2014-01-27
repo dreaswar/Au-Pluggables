@@ -1,11 +1,12 @@
 PHONE_FORM_CONSTANTS = {
-    'ISD_Code':{
+
+    'country_code':{
                 'max_length': 5,
                 "data-dojo-type": "dijit.form.ValidationTextBox",
                 "data-dojo-props": r"'required' :'true' ,'regExp':'[\\d]+','invalidMessage':'Invalid Character' "
     },
 
-    'STD_Code':{
+    'area_code':{
               'max_length': 6,
               "data-dojo-type": "dijit.form.ValidationTextBox",
               "data-dojo-props": r"'required' : 'true' ,'regExp':'[\\d]+','invalidMessage' : 'Invalid Character'"
@@ -21,5 +22,12 @@ PHONE_FORM_CONSTANTS = {
               'max_length': 30,
               "data-dojo-type": "dijit.form.Select",
               "data-dojo-props": r"'required' : 'true' ,'regExp':'[\\w]+','invalidMessage' : 'Invalid Character'"
+    },
+
+    'preferred':{
+              'max_length': 30,
+              "data-dojo-type": "dijit.form.Checkbox",
+              "data-dojo-props": r"'required' : false "
     }
+
 }

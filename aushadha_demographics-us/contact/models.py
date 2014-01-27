@@ -33,33 +33,15 @@ class Contact(AuShadhaBaseModel):
       self.__model_label__ = "contact"
       self._parent_model = 'patient_detail'
 
-    address_type = models.CharField('Type',
-                                    max_length=10,
-                                    choices=(("Home", "Home"),
-                                             ("Office", "Office"),
-                                             ("Others", "Others")
-                                             ),
+    address_type = models.CharField('Type', max_length=10,
+                                    choices=(("Home", "Home"), ("Work", "Work"),("Others", "Others")),
                                     default = "Home")
-    address = models.TextField(max_length=100,
-                               help_text='limit to 100 words'
-                               )
-    city = models.CharField(max_length=20,
-                            default='Coimbatore'
-                            )
-    state = models.CharField(max_length=20,
-                             default="Tamil Nadu"
-                             )
-    country = models.CharField(max_length=20,
-                               default="USA"
-                               )
-    zip_code = models.PositiveIntegerField(max_length=8,
-                                          null=True,
-                                          blank=True
-                                              )
-    patient_detail = models.ForeignKey(PatientDetail,
-                                       null=True,
-                                       blank=True
-                                       )
+    address = models.TextField(max_length=1000,  help_text='limit to 1000 words')
+    city = models.CharField(max_length=100)
+    state = models.CharField(max_length=100)
+    country = models.CharField(max_length=20,default="USA")
+    zip_code = models.PositiveIntegerField(max_length=8)
+    patient_detail = models.ForeignKey(PatientDetail,null=True,blank=True)
 
     class Meta:
         verbose_name = "Address"

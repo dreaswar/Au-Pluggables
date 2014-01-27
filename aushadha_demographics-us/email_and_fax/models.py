@@ -36,11 +36,9 @@ class EmailAndFax(models.Model):
 
     date_entered = models.DateTimeField(auto_now_add=True)
     email = models.EmailField(max_length=75, blank=True, null=True)
-    fax = models.PositiveIntegerField(
-        max_length=20, null=True, blank=True)
+    fax = models.PositiveIntegerField(max_length=20, null=True, blank=True)
     web = models.URLField(max_length=50, null=True, blank=True)
-    patient_detail = models.ForeignKey(
-        PatientDetail, null=True, blank=True)
+    patient_detail = models.ForeignKey(PatientDetail, null=True, blank=True)
 
     def __unicode__(self):
         return "%s- %s -%s" % (self.email, self.fax, self.web)

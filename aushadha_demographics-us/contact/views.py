@@ -100,7 +100,7 @@ def contact_add(request, patient_id = None):
                       "city": contact_object.city,
                       "state": contact_object.state,
                       "country": contact_object.country,
-                      "pincode": contact_object.pincode,
+                      "zip_code": contact_object.zip_code,
                       "edit": contact_object.urls['edit'],
                       "del": contact_object.urls['del'],
                   }
@@ -175,7 +175,7 @@ def contact_edit(request, contact_id = None):
                               "city": contact_object.city,
                               "state": contact_object.state,
                               "country": contact_object.country,
-                              "pincode": contact_object.pincode,
+                              "zip_code": contact_object.zip_code,
                               "edit": contact_object.urls['edit'],
                               "del": contact_object.urls['del']
                               }

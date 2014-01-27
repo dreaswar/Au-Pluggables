@@ -32,28 +32,23 @@ class Guardian(AuShadhaBaseModel):
       super(Guardian,self).__init__(*args, **kwargs)
       self.__model_label__ = "guardian"
       self._parent_model = 'patient_detail'
-    
-    guardian_name = models.CharField(max_length=20, blank=True,
-                                     null=True,
+
+    guardian_name = models.CharField(max_length=100,
                                      help_text="Enter Guardian Name if Patient is a minor"
                                      )
-    relation_to_guardian = models.CharField('Relation',
-                                            max_length=20,
-                                            blank=True,
-                                            null=True,
-                                            help_text="Enter relationship to Guardian if Patient is a Minor",
-                                            choices=(("Father", "Father"),
-                                                     ("Mother", "Mother"),
-                                                     ("Local Guardian", "LocalGuardian")
-                                                     )
-                                            )
-    guardian_phone = models.PositiveIntegerField('Phone',
-                                                 max_length=20,
-                                                 blank=True,
-                                                 null=True
-                                                 )
-    patient_detail = models.ForeignKey(
-        PatientDetail, null=True, blank=True)
+    relation_to_guardian = models.CharField('Specify Relationship to Patient', max_length=50,
+                                            help_text="Enter relationship to Guardian if Patient is a Minor"
+                                           )
+    guardian_address = models.TextField('Address',max_length=1000)
+    guardian_city = models.CharField('City',max_length=100)
+    guardian_state = models.CharField('State',max_length=50)
+    guadian_country = models.CharField('Country',max_length=50)
+    guardian_zip_code = models.PositiveIntegerField('Zip Code',max_length=20)
+    guardian_phone = models.PositiveIntegerField('Phone',max_length=20, help_text = "(xxx) xxx-xxxx" )
+
+    next_of_kin = models.BooleanField("Mark as Next of Kin", default = False)
+    emergency_contact = models.BooleanField("Mark as Emergency Contact", default = False, unique = True)
+    patient_detail = models.ForeignKey(PatientDetail, null=True, blank=True)
 
     class Meta:
         verbose_name = "Guardian Details"
@@ -65,6 +60,7 @@ class Guardian(AuShadhaBaseModel):
             return "%s " % (self.guardian_name)
         else:
             return "No Guardian Name Provided"
+
 
 ############################# Model Forms ######################################
 
