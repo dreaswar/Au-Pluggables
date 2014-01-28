@@ -23,7 +23,7 @@ may have different license terms and these should be honoured
 Present Modules
 ---------------
 
-1 - aushadha_demographics-us --> US model for demographics data collection
+1 - aushadha_demographics_us --> US model for demographics data collection
 
 
 

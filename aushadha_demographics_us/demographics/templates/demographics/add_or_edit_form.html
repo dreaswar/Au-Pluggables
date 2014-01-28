@@ -1,0 +1,215 @@
+<div data-dojo-type = "dijit/form/Form" 
+     id             = "newDemographicsAddOrEditForm" 
+     data-dojo-id   = "newDemographicsAddOrEditForm"
+     encType        = "multipart/form-data" 
+     action         = "" 
+     method         = "">
+
+  <script type="dojo/on" data-dojo-event="submit">
+ 
+    if( this.validate() ){
+
+      require(["dijit/registry", 
+               "dojo/request",
+               "dojo/dom",
+               "dojo/dom-form",
+               "dojo/json",
+               "dojo/_base/fx",
+               "dojo/domReady!"
+      ],
+
+      function(registry, request, dom, domForm, JSON,fx){
+
+          var url = "{{action}}";
+          var form_data = domForm.toObject('newDemographicsAddOrEditForm');
+
+          request(url,{method:"POST", data: form_data}).
+          then( 
+
+            function(json){
+
+              var jsondata = JSON.parse(json);
+
+              if (jsondata.success == true){
+
+                if (jsondata.editUrl){
+
+                  publishInfo(jsondata.error_message);
+                  registry.byId("DEMOGRAPHICS_CENTER_BC_TOP_CP").set('href', jsondata.editUrl);
+
+                }
+
+                else{
+
+                  publishInfo(jsondata.error_message);
+
+                }
+
+              }
+            },
+
+            function(json){
+
+              var jsondata = JSON.parse(json);
+              publishError(jsondata.error_message);
+
+            },
+
+            function(evt){
+
+              publishError(evt);
+              return false
+
+            });
+
+      return false
+    });
+    
+      return false
+    
+    }
+
+    else{
+        raiseInvalidFormSubmission();
+        return false
+    }
+
+  </script>
+
+
+<table>
+    <tr> <td> <label for="id_date_of_birth"> Birth Date</label> </td>
+         <td> {{demographics_form.date_of_birth}}  </td>
+    </tr>
+
+    <tr> <td> <label for="id_social_security_number"> Social Security No. </label> </td>
+         <td> {{demographics_form.social_security_number}}  </td>
+    </tr>
+    <tr> <td> <label for="id_medical_record_number"> Medical Record Number </label> </td>
+         <td> {{demographics_form.medical_record_number}}  </td>
+    </tr>
+
+    <tr>
+        <td > <label for="id_race"> Race</label> </td>
+        <td>  {{demographics_form.race}} </td>
+    </tr>
+    <tr>
+        <td > <label for="id_religion"> Languages</label> </td>
+        <td> {{demographics_form.languages_known}} </td>
+    </tr>
+
+  </tbody>
+
+</table>
+
+<div data-dojo-type="dijit/TitlePane"
+     data-dojo-props="open: false, title: 'Employer Details' "
+     >
+  <table>
+    <tbody>
+        <tr> <td> <label for="id_occupation"> Occupation </label> </td>
+            <td> {{demographics_form.occupation}}  </td>
+        </tr>
+
+        <tr> <td> <label for="id_employer_name"> Employer </label> </td>
+            <td> {{demographics_form.employer_name}}  </td>
+        </tr>
+
+        <tr> <td> <label for="id_employer_address"> Address </label> </td>
+            <td> {{demographics_form.employer_address}}  </td>
+        </tr>
+
+        <tr> <td> <label for="id_employer_city"> City </label> </td>
+            <td> {{demographics_form.employer_city}}  </td>
+        </tr>
+
+        <tr> <td> <label for="id_employer_state"> State </label> </td>
+            <td> {{demographics_form.employer_state}}  </td>
+        </tr>
+
+        <tr> <td> <label for="id_employer_country"> Country </label> </td>
+            <td> {{demographics_form.employer_country}}  </td>
+        </tr>
+
+        <tr> <td> <label for="id_employer_zip_code"> Zip Code </label> </td>
+            <td> {{demographics_form.employer_zip_code}}  </td>
+        </tr>
+
+        <tr> <td> <label for="id_employer_phone"> Phone </label> </td>
+            <td> {{demographics_form.employer_phone}}  </td>
+        </tr>
+
+    </tbody>
+  </table>
+</div>
+
+    <button data-dojo-type = "dijit/form/Button" 
+            data-dojo-props="iconClass: 'dijitEditorIcon dijitEditorIconSave'"
+            type           = "submit" 
+            name           = "{{button_label}}Button" 
+            value          = "{{button_label}}"
+    >
+      {{button_label}}
+    </button>
+
+  {% if canDel %}
+
+  <button data-dojo-type  = "dijit/form/Button" 
+		  data-dojo-props = "iconClass: 'dijitEditorIcon dijitEditorIconDelete'"
+          type            = "button"
+          name            = "delDemographics"
+          id              = "delDemographicsBtn"
+   >
+
+    Delete
+
+    <script type="dojo/on" data-dojo-event="click" >
+
+      var confirmDialog = confirm('This will delete the Demographics.. Are you Sure ? ')
+
+      if (confirmDialog == true){
+
+        require(["dojo/request", 
+                 "dojo/json", 
+                 "dojo/dom", 
+                 "dijit/registry"
+                 ], 
+
+        function(request, JSON, dom, registry){
+
+        request("{{delUrl}}",{method: "GET"}).
+        then(
+
+            function(json){
+              var jsondata = JSON.parse(json);
+
+              if(jsondata.success == true){
+
+                publishInfo(jsondata.error_message);
+                registry.byId("DEMOGRAPHICS_CENTER_BC_TOP_CP").set('href', jsondata.addUrl);
+              }
+
+              else{
+                publishError(jsondata.error_message);
+              }
+
+            },
+
+            function(json){
+              var jsondata = JSON.parse(json);
+              publishError(jsondata.error_message);
+            }
+          );
+
+        });
+
+      }
+
+      else{
+        return false
+      }
+  </script>
+
+  </button>
+
+{% endif %}
