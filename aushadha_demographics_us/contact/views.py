@@ -47,8 +47,8 @@ def contact_json(request, patient_id = None):
       json = generate_json_for_datagrid(contact_obj)
       return HttpResponse(json, content_type="application/json")
 
-    except(AttributeError, NameError, TypeError, ValueError, KeyError):
-        raise Http404("ERROR:: Bad request.Invalid arguments passed")
+    #except(AttributeError, NameError, TypeError, ValueError, KeyError):
+        #raise Http404("ERROR:: Bad request.Invalid arguments passed")
 
     except(PatientDetail.DoesNotExist):
         raise Http404("ERROR:: Patient requested does not exist.")

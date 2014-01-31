@@ -62,16 +62,16 @@
 
             });
 
-      return false
+      return false;
     });
     
-      return false
+      return false;
     
     }
 
     else{
         raiseInvalidFormSubmission();
-        return false
+        return false;
     }
 
   </script>
@@ -97,7 +97,15 @@
         <td > <label for="id_religion"> Languages</label> </td>
         <td> {{demographics_form.languages_known}} </td>
     </tr>
-
+    <tr>
+        <td > <label for="id_marital_status"> Marital Status </label> </td>
+        <td> {{demographics_form.marital_status}} </td>
+    </tr>
+    <tr>
+        <td > <label for="id_barriers_to_communication"> Barriers to Communication </label> </td>
+        <td> {{demographics_form.barriers_to_communication}} </td>
+    </tr>
+  
   </tbody>
 
 </table>
@@ -165,7 +173,7 @@
 
     <script type="dojo/on" data-dojo-event="click" >
 
-      var confirmDialog = confirm('This will delete the Demographics.. Are you Sure ? ')
+      var confirmDialog = confirm('This will delete the Demographics.. Are you Sure ? ');
 
       if (confirmDialog == true){
 
@@ -206,7 +214,7 @@
       }
 
       else{
-        return false
+        return false;
       }
   </script>
 

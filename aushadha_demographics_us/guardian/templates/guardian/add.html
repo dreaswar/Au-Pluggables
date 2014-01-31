@@ -11,18 +11,18 @@
           if( this.validate() ){
 
             require([
-            "dijit/registry", 
+              "dijit/registry", 
             ],
 
             function(registry){
 
-            //    {% if perms.guardian.add_guardian %}
-            addItem("{{patient_detail_obj.urls.add.guardian}}", "newGuardianAddForm", "GUARDIAN_GRID" );
-            //    {% else %}
-            registry.byId("permissionDeniedErrorDialog").show();
-            //   {% endif %}
+              //    {% if perms.guardian.add_guardian %}
+              addItem("{{patient_detail_obj.urls.add.guardian}}", "newGuardianAddForm", "GUARDIAN_GRID" );
+              //    {% else %}
+              registry.byId("permissionDeniedErrorDialog").show();
+              //   {% endif %}
 
-          });
+            });
 
           return false;
 
@@ -35,36 +35,36 @@
 
           }
 
+      </script>
+
+      <table>
+        {{guardian_form}}
+      </table>
+
+      <button   type 	          = "submit" 
+                data-dojo-type  = "dijit/form/Button"
+                data-dojo-props = "iconClass:'dijitIconSave'"
+                name 	          = "submitbutton" 
+                id	          = "guardian_form_submit"
+                value           = "Add"
+              >
+        Add
+
+      </button>
+
+      <button   type 	        = "reset" 
+                data-dojo-type  = "dijit/form/Button"
+                data-dojo-props = "iconClass:'dijitIconClear'"
+                id 		        = "guardian_form_reset"
+                value           = "Reset"
+                >
+          Reset
+
+        <script type="dojo/on" data-dojo-event="click">
+            return confirm( 'This will reset the form. Proceed ? ' );
         </script>
 
-        <table>
-          {{guardian_form}}
-        </table>
-
-        <button   type 	          = "submit" 
-                  data-dojo-type  = "dijit/form/Button"
-                  data-dojo-props = "iconClass:'dijitIconSave'"
-                  name 	          = "submitbutton" 
-                  id	          = "guardian_form_submit"
-                  value           = "Add"
-                >
-          Add
-
-        </button>
-
-        <button   type 	        = "reset" 
-                  data-dojo-type  = "dijit/form/Button"
-                  data-dojo-props = "iconClass:'dijitIconClear'"
-                  id 		        = "guardian_form_reset"
-                  value           = "Reset"
-                  >
-            Reset
-
-          <script type="dojo/on" data-dojo-event="click">
-              return confirm( "This will reset the form. Proceed ? " );
-          </script>
-
-        </button>
+      </button>
 
 </div>
 

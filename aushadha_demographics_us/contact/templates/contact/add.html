@@ -3,10 +3,11 @@
      data-dojo-id   = "newContactAddForm"
      encType        = "multipart/form-data" 
      action         = " " 
-     method         = " " >
+     method         = " " 
+     >
 
     <script type="dojo/on" data-dojo-event="submit">
-    
+
       if( this.validate() ){
         require([
         "dijit/registry", 
@@ -17,22 +18,18 @@
           //    {% else %}
           registry.byId( "permissionDeniedErrorDialog" ).show();
           //   {% endif %}
+          return false;
         });
-        return false;     
+        return false;
       }
-
-      else{
+      
+      else {
         raiseInvalidFormSubmission();
         return false;
       }
 
     </script>
 
-    <script type = "dojo/on" data-dojo-event = "reset" >
-
-        return confirm( "This will reset the form values. Click OK to proceed " );
-
-    </script>
 
     <table>
 
@@ -45,19 +42,22 @@
           data-dojo-type  = "dijit/form/Button"
           data-dojo-props = "iconClass:'dijitIconSave'"
           name 	          = "submitbutton" 
-          id 		      = "contact_form_submit"
           value           = "Add"
           >
       Add
     </button>
 
-    <button type            = "reset" 
-            data-dojo-type  = "dijit/form/Button"
-            data-dojo-props = "iconClass:'dijitIconClear'"
-            id              = "contact_form_reset"
-            value           = "Reset"
-            >
-      Reset
+    <button   type            = "reset" 
+              data-dojo-type  = "dijit/form/Button"
+              data-dojo-props = "iconClass:'dijitIconClear'"
+              value           = "Reset"
+              >
+        Reset
+
+      <script type="dojo/on" data-dojo-event="click">
+          return confirm( 'This will reset the form. Proceed ? ' );
+      </script>
+
     </button>
 
 </div>

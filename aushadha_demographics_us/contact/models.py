@@ -49,7 +49,7 @@ class Contact(AuShadhaBaseModel):
         ordering = ('patient_detail', 'city', 'state')
 
     def __unicode__(self):
-        if self.pincode:
+        if self.zip_code:
             return "%s, %s, %s, %s - %s" % (self.address,
                                             self.city,
                                             self.state,

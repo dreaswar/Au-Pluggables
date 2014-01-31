@@ -75,48 +75,48 @@ DEMOGRAPHICS_FORM_CONSTANTS = {
                       "occupation":{
                               "max_length": 30,
                               "data-dojo-type": "dijit.form.ValidationTextBox",
-                              "data-dojo-props": r"'required':true, 'regExp': '[w\\]+', 'invalidMessage': 'Please select a value' "
+                              "data-dojo-props": r"'required':true, 'regExp': '[\\w]+', 'invalidMessage': 'Please select a value' "
                       },
 
                       "employer_name":{
                               "max_length": 30,
                               "data-dojo-type": "dijit.form.ValidationTextBox",
-                              "data-dojo-props": r"'required':true, 'regExp': '[w\\]+', 'invalidMessage': 'Please select a value' "
+                              "data-dojo-props": r"'required':true, 'regExp': '[\\w]+', 'invalidMessage': 'Please select a value' "
                       },
 
                       "employer_address":{
                               "max_length": 1000,
                               "data-dojo-type": "dijit.form.SimpleTextarea",
-                              "data-dojo-props": r"'required':true, 'regExp': '[w\\]+', 'invalidMessage': 'Please select a value' "
+                              "data-dojo-props": r"'required':true, 'regExp': '[\\w]+', 'invalidMessage': 'Please select a value' "
                       },
 
                       "employer_city":{
                               "max_length": 30,
                               "data-dojo-type": "dijit.form.ValidationTextBox",
-                              "data-dojo-props": r"'required':true, 'regExp': '[w\\]+', 'invalidMessage': 'Please select a value' "
+                              "data-dojo-props": r"'required':true, 'regExp': '[\\w]+', 'invalidMessage': 'Please select a value' "
                       },
 
                       "employer_state":{
                               "max_length": 30,
                               "data-dojo-type": "dijit.form.ValidationTextBox",
-                              "data-dojo-props": r"'required':true, 'regExp': '[w\\]+', 'invalidMessage': 'Please select a value' "
+                              "data-dojo-props": r"'required':true, 'regExp': '[\\w]+', 'invalidMessage': 'Please select a value' "
                       },
 
                       "employer_country":{
                                         "max_length": 50,
                                         "data-dojo-type": "dijit.form.ValidationTextBox",
-                                        "data-dojo-props": r"'required':true, 'regExp': '[w\\]+', 'invalidMessage': 'Please select a value' "
+                                        "data-dojo-props": r"'required':true, 'regExp': '[\\w]+', 'invalidMessage': 'Please select a value' "
                       },
 
                       "employer_zip_code":{
                                         "max_length": 10,
                                         "data-dojo-type": "dijit.form.ValidationTextBox",
-                                        "data-dojo-props": r"'required':true, 'regExp': '[d\\]+', 'invalidMessage': 'Please select a value' "
+                                        "data-dojo-props": r"'required':true, 'regExp': '[\\d]+', 'invalidMessage': 'Please select a value' "
                       },
 
                       "employer_phone":{
                                         "max_length": 15,
                                         "data-dojo-type": "dijit.form.ValidationTextBox",
-                                        "data-dojo-props": r"'required':true, 'regExp': '[d\\]+', 'invalidMessage': 'Please select a value' "
+                                        "data-dojo-props": r"'required':true, 'regExp': '[\\d]+', 'invalidMessage': 'Please select a value' "
                       },
 }
