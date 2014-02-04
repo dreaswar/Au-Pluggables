@@ -271,7 +271,7 @@ panes:
                           widgets: 
 #                               - *GUARDIAN_ADD_BUTTON
                             - *GUARDIAN_GRID
-                    
+
                     - id: GUARDIAN_ADD_FORM
                       type: cp
                       region: bottom
@@ -283,3 +283,35 @@ panes:
                         borderRadius: 5px
                       url: {{patient_detail_obj.urls.add.guardian}}
 
+                - id: INSURANCE_BC
+                  type: bc
+                  title: Insurance
+                  closable: False
+                  widgets: []
+                  panes:
+
+                    - id : INSURANCE_GRID_CP
+                      type: cp
+                      region: center
+                      widgets: []
+                      panes: 
+
+                        - id: INSURANCE_GRID_CONTAINER
+                          type: dom
+                          domType: div
+                          style:
+                            height: 20em
+                          panes: []
+                          widgets: []
+#                             - *INSURANCE_GRID
+
+                    - id: INSURANCE_ADD_FORM
+                      type: cp
+                      region: bottom
+                      splitter: True
+                      style: 
+                        height: 5em
+                        background: whitesmoke
+                        border: solid 1px slate
+                        borderRadius: 5px
+                      url: #INSURANCE_ADD_URL
