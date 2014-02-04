@@ -16,6 +16,7 @@ VARS:
           type: grid
           url: {{patient_detail_obj.urls.json.contact}}
           str: CONTACT_LARGE
+          gridStrModule: demographics/grid_structures
           activateRowClick: !!bool False
           title:  Contact
           storeToUse:  CONTACT_GRID_STORE
@@ -34,6 +35,7 @@ VARS:
           type: grid
           url: {{patient_detail_obj.urls.json.phone}}
           str: PHONE_LARGE
+          gridStrModule: demographics/grid_structures
           activateRowClick: !!bool False
           title:  Phone
           storeToUse:  PHONE_GRID_STORE
@@ -51,6 +53,7 @@ VARS:
           type: grid
           url: {{patient_detail_obj.urls.json.guardian}}
           str: GUARDIAN
+          gridStrModule: demographics/grid_structures
           activateRowClick: !!bool False
           title:  Guardian
           storeToUse:  GUARDIAN_GRID_STORE
@@ -91,12 +94,20 @@ URLS:
               kwds: { kwargs : { patient_id: *PATIENT_ID }  }
 
 
- # YAML
+# YAML
 
+# Basic module dependencies and loading order. Loading order is not used anymore, but left here temporarily
 depends_on: [ patient ]
 load_after: patient
 load_first: !!bool False
 
+#This is required for DOJO to load the additional scripts provided by this module
+dojoConfig: 
+  - name: demographics
+    location: {{STATIC_URL}}demographics/js
+    main: main
+
+#UI Definitions for Pane UI creation start here
 id       : DEMOGRAPHICS
 type     : bc
 title    : Demographics
