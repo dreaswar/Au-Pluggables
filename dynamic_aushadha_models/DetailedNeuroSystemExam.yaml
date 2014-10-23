@@ -1,0 +1,250 @@
+# YAML FILE FOR MODELS
+
+__module__: "dynamic_aushadha_models.models"
+__doc__: Dynamic Models Constructed from YAML
+model_classes:
+
+  #Base Neuro Exam ModelClass to which subclass relates
+  - class: DetailedNeuroSystemExam
+    __doc__: Detailed Neurological Examination Format
+    fields:
+
+      - name: created_at
+        field_type: DateTimeField
+        args: []
+        kwargs:
+           auto_now: True
+           auto_now_add: False
+
+  # Speech & Language Functions
+  - class: SpeechAndLanguageFunctions
+    __doc__: Speech and Language Functions
+    fields:
+
+      - name: created_at
+        field_type: DateTimeField
+        args: []
+        kwargs:
+           auto_now: True
+           auto_now_add: False
+
+      - name: articulation
+        field_type: CharField
+        args: []
+        kwargs:
+          max_length: 30
+          choices: 
+            !!python/tuple [
+                !!python/tuple [normal,Normal],
+                !!python/tuple [spastic,Spastic],
+                !!python/tuple [flaccid,Flaccid],
+                !!python/tuple [ataxic,Ataxic],
+                !!python/tuple [mixed,Mixed],
+                !!python/tuple [cerebral,Cerebral],
+                !!python/tuple [cerebellar,Cerebellar],
+                !!python/tuple [lmn, LMN ],
+              ]
+
+          default: Normal
+
+      - name: fluency
+        field_type: TextField
+        args: []
+        kwargs:
+          max_length: 750
+          default: NAD
+          help_text: restrict to 750 char.
+
+      - name: grammar
+        field_type: TextField
+        args: []
+        kwargs:
+          max_length: 750
+          default: NAD
+          help_text: restrict to 750 char.
+
+      - name: content
+        field_type: TextField
+        args: []
+        kwargs:
+          max_length: 750
+          default: NAD
+          help_text: restrict to 750 char.
+
+      - name: prosody
+        field_type: TextField
+        args: []
+        kwargs:
+          max_length: 750
+          default: NAD
+          help_text: restrict to 750 char.
+
+      - name: comprehension
+        field_type: TextField
+        args: []
+        kwargs:
+          max_length: 750
+          default: NAD
+          help_text: restrict to 750 char.
+
+      - name: repetition
+        field_type: TextField
+        args: []
+        kwargs:
+          max_length: 750
+          default: NAD
+          help_text: restrict to 750 char.
+
+      - name: naming
+        field_type: TextField
+        args: []
+        kwargs:
+          max_length: 750
+          default: NAD
+          help_text: restrict to 750 char.
+
+      - name: reading
+        field_type: TextField
+        args: []
+        kwargs:
+          max_length: 750
+          default: NAD
+          help_text: restrict to 750 char.
+
+      - name: writing
+        field_type: TextField
+        args: []
+        kwargs:
+          max_length: 750
+          default: NAD
+          help_text: restrict to 750 char.
+
+      - name: simple_mathematical_operations
+        field_type: TextField
+        args: []
+        kwargs:
+          max_length: 750
+          default: NAD
+          help_text: restrict to 750 char.
+
+      - name: praxis
+        field_type: TextField
+        args: []
+        kwargs:
+          max_length: 750
+          default: NAD
+          help_text: restrict to 750 char.
+
+
+  # Higher Mental Functions
+  - class: HigherMentalFunctions
+    __doc__: Detailed Higher Mental Functions Assessment
+    fields:
+
+      - name: neuro_exam
+        field_type: ForeignKey
+        args: ['DetailedNeuroSystemExam']
+        kwargs:
+           'null': True
+           blank: True
+
+      - name: created_at
+        field_type: DateTimeField
+        args: []
+        kwargs:
+           auto_now: True
+           auto_now_add: False
+
+      - name: level_of_consciousness
+        field_type: CharField
+        args: []
+        kwargs:
+           max_length: 30
+           help_text: as GCS Score - out of 15
+           default: '15/15'
+
+      - name: orientation_to_time
+        field_type: BooleanField
+        args: []
+        kwargs:
+           max_length: 2
+           default: !!bool True
+
+      - name: orientation_to_place
+        field_type: BooleanField
+        args: []
+        kwargs:
+           max_length: 2
+           default: !!bool True
+
+      - name: orientation_to_person
+        field_type: BooleanField
+        args: []
+        kwargs:
+           max_length: 2
+           default: !!bool True
+
+      - name: attention_forward_subtraction
+        field_type: BooleanField
+        args: []
+        kwargs:
+           max_length: 2
+           default: !!bool True
+           help_text: "Attention: Forward Subtraction from 100"
+
+      - name: attention_backward_subtraction
+        field_type: BooleanField
+        args: []
+        kwargs:
+           max_length: 2
+           default: !!bool True
+           help_text: "Attention: Backward Subtraction from 100"
+
+      - name: short_term_memory
+        field_type: TextField
+        args: []
+        kwargs:
+           max_length: 750
+           help_text: retrict to 750 chars.
+
+      - name: explicit_long_term_memory
+        field_type: TextField
+        args: []
+        kwargs:
+           max_length: 750
+           help_text: retrict to 750 chars.
+
+      - name: implicit_long_term_memory
+        field_type: TextField
+        args: []
+        kwargs:
+           max_length: 750
+           help_text: retrict to 750 chars.
+
+      - name: learning_and_retrieval
+        field_type: TextField
+        args: []
+        kwargs:
+           max_length: 750
+           help_text: retrict to 750 chars.
+
+      - name: intelligence
+        field_type: TextField
+        args: []
+        kwargs:
+           max_length: 750
+           help_text: retrict to 750 chars.
+
+      - name: speech_and_language_functions
+        field_type: ForeignKey
+        args: ['SpeechAndLanguageFunctions']
+        kwargs: 
+          'null': True
+          blank: True
+
+      #- name: lobe_function_test
+        #field_type: ForeignKey
+        #args: ['LobeFunctionTest']
+        #kwargs: 
+          #null: True
+          #blank: True

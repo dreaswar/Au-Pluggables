@@ -1,0 +1,24 @@
+# YAML FILE FOR MODELS
+
+__module__: "dynamic_aushadha_models.models"
+__doc__: Documentation can be added here
+model_classes:
+
+  - class: DynamicAuShadhaModel
+    __doc__: Documentation can be added here
+    fields:
+
+      - name: created_at
+        field_type: DateTimeField
+        args: []
+        kwargs:
+           auto_now: True
+           auto_now_add: False
+
+      - name: name
+        field_type: CharField
+        args: []
+        kwargs:
+           max_length: 30         
+
+
